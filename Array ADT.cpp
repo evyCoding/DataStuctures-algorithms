@@ -452,5 +452,4 @@ void Array :: max_and_min()
     std::cout << max << " & " << min;
 }
 
-//Strings
 
