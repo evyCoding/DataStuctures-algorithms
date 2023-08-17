@@ -1,6 +1,3 @@
-#include <iostream>
-#include <cmath>
-#include <cstdlib>
 #include "linked_list.h"
 
 int main()
