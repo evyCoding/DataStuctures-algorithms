@@ -1,6 +1,10 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <cmath>
+#include <cstdlib>
+#include <algorithm>
+#include <vector>
 #include <algorithm>
 
 class Node
