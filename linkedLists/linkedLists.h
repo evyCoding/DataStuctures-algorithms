@@ -66,3 +66,23 @@ public:
 	void merge(linkedList * list);
 
 };  
+
+class CircularLinkedList
+{
+private:
+	Node* Head = new Node;
+public:
+	CircularLinkedList(void);
+	
+	void create(std::vector<int> vex);
+
+	void Display(void);
+
+	void insert(int value);
+
+	void Delete(int position);
+
+	void DeleteHead();
+
+	int CountingNodes(void);
+};
