@@ -1,6 +1,78 @@
 #include "linked_list.h"
 
 
+//todo -> circularLinkedLists :
+
+CircularLinkedList :: CircularLinkedList(void) {
+	Head->next = Head;
+	Head->Data = 0;
+}
+
+void CircularLinkedList::create(std::vector<int> vex) {
+	for (int i = 0; i < vex.size(); i++)
+		insert(vex[i]);
+}
+
+void CircularLinkedList :: Display(void) {
+	auto* keepTrack = Head->next;
+	while (keepTrack != Head) {
+		std::cout << keepTrack->Data << std::endl;
+		keepTrack = keepTrack->next;
+	}
+}
+
+void CircularLinkedList::insert(int value) {
+	auto* n = new Node;
+	auto* keepTrack = Head;
+	n->Data = value;
+	n->next = Head;
+	while (keepTrack->next != Head) 
+		keepTrack = keepTrack->next;
+	keepTrack->next = n;
+}
+
+int CircularLinkedList::CountingNodes(void) {
+	int k(0);
+	auto* keepTrack = Head->next;
+	while (keepTrack != Head) {
+		keepTrack = keepTrack->next;
+		k++;
+	}
+	return k;
+}
+
+void CircularLinkedList::Delete(int pos) {
+	if (pos < 0 || Head == Head->next || this->CountingNodes() - 1 < pos)
+		return;
+	if (pos == 0) {
+		if ((Head->next)->next == Head)
+			Head->next == Head;
+		else
+			Head->next = (Head->next)->next;
+	}
+	int count(0);
+	Node* pre = nullptr;
+	auto* curr = Head->next;
+	for (count; count < pos + 1 && curr != Head; count++) {
+		pre = curr;
+		curr = curr->next;
+	}
+	pre->next = curr->next;
+}
+
+void CircularLinkedList::DeleteHead() {
+	Head = Head->next;
+}
+
+
+//todo -> linkedLists :
+
+void linkedList::create(std::vector<int> vex) {
+	Head->Data = vex[0];
+	for (int i = 1; i < vex.size(); i++)
+		insertByTail(vex[i]);
+}
+
 void linkedList::append(int x) {
 	auto* p = new Node;
 	p->Data = x;
@@ -41,7 +113,6 @@ void linkedList::insertIfSorted(int x) {
 		n->next = keep;
 	}
 }	
-
 
 void linkedList::deleteHead(void) {
 	auto* KeepTrack = Head->next;
@@ -91,12 +162,11 @@ void linkedList::DeleteByValue(int val) {
 
 void linkedList::Display(void) {
 	auto* p = Head;
-	while (p->next)
+	while (p)
 	{
 		std::cout << p->Data << ' ';
 		p = p->next;
 	}
-	std::cout << p->Data;
 }
 
 void linkedList::Display_recurcive(Node *sel)
@@ -257,6 +327,3 @@ void linkedList::reverse_two(void) {
 }
 
 void linkedList::merge(linkedList* list) { Tail->next = list->Head; }
-
-
-
