@@ -4,16 +4,13 @@
 #include <cmath>
 #include <cstdlib>
 #include <algorithm>
-#include <vector>
-#include <algorithm>
 
-class Node
+struct Node
 {
-public:
 	int Data;
 	Node* next;
-
-	explicit Node() : Data(0), next(nullptr) {};
+	//todo : consturctor & destructor
+	explicit Node(void) : Data(0), next(nullptr) {};
 	~Node() { delete next; };
 };
 
@@ -23,17 +20,21 @@ public:
 	 Node* Head = new Node;
 	 Node* Tail = Head;
 public:
+	void create(std::vector<int> vex);
+
 	void append(int x);
 
-	void insertByTail(int x);
+	void insert(int index, int value); // index base 0
 
-	void insertIfSorted(int x);
+	void appendByTail(int x);
+
+	void appendifSorted(int x);
 
 	void deleteTail(void);
 
 	void deleteHead(void);
 
-	void Delete(int pos);
+	void Delete(int pos); // index base 0
 
 	void DeleteByValue(int val);
 
@@ -65,7 +66,7 @@ public:
 
 	void merge(linkedList * list);
 
-};  
+};
 
 class CircularLinkedList
 {
@@ -78,11 +79,45 @@ public:
 
 	void Display(void);
 
-	void insert(int value);
+	void append(int value);
 
-	void Delete(int position);
+	void Delete(int position); // index base 0
 
 	void DeleteHead();
 
 	int CountingNodes(void);
+};
+
+struct DoubleNode 
+{
+	int Data;
+	DoubleNode* next;
+	DoubleNode* prev;
+	//todo : constructor & destructor
+	explicit DoubleNode() : Data(0), next(nullptr), prev(nullptr) {}
+	~DoubleNode() {
+		delete next;
+		delete prev;
+	}
+};
+
+class DoubleLinkedList
+{
+private:
+	DoubleNode* Head = new DoubleNode;
+	DoubleNode* Tail = Head;
+public:
+	void create(std::vector<int> vex);
+
+	void Display(void);
+
+	void revDisplay(void);
+
+	void insert(int index, int value); // -1 index == switch head
+	
+	void append(int x);
+	
+	void Delete(int position);
+
+	void DeleteHead(void);
 };
