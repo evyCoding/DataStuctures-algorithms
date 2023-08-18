@@ -2,10 +2,8 @@
 
 int main()
 {
-	auto* list = new linkedList;
-	auto* Arr = new linkedList;
-	auto* ptr = new Node;
-	for (int i = 0; i < 6; i++)
-		list->insertByTail(i + 1);
-    //list->Display();
+	auto* list = new DoubleLinkedList;
+	std::vector<int> vec {1, 2, 3, 4, 5, 6, 7, 9};
+	list->create(vec);
+	list->Display();
 } 
