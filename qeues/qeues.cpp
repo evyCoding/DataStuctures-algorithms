@@ -9,8 +9,9 @@ qeues_with_Array::qeues_with_Array() {
 qeues_with_Array::~qeues_with_Array() { delete Arr; }
 
 void qeues_with_Array::pop(void) {
-	Arr[rear] = -258;
-	rear--;
+	if (front == rear) return;
+	Arr[front] = -258;
+	front++;
 }
 
 void qeues_with_Array::push(int x) {
